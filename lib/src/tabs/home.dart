@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:outpass_app/src/components/appbar.dart';
+import 'package:outpass_app/src/tabs/apply_outpass.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -45,7 +48,31 @@ class _HomeState extends State<Home> {
                         color: const Color(0xFFD0BCFF),
                         child: InkWell(
                           borderRadius: BorderRadius.circular(16.0),
-                          onTap: () => print('Apply for Outpass'),
+                          onTap: () {
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        const ApplyOutpass(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  const begin =
+                                      Offset(1.0, 0.0); // Start from the right
+                                  const end = Offset.zero;
+                                  const curve = Curves.ease;
+
+                                  var tween = Tween(begin: begin, end: end)
+                                      .chain(CurveTween(curve: curve));
+                                  var offsetAnimation = animation.drive(tween);
+
+                                  return SlideTransition(
+                                    position: offsetAnimation,
+                                    child: child,
+                                  );
+                                },
+                              ),
+                            );
+                          },
                           splashColor: const Color(0xFFBFABEE).withOpacity(1.0),
                           child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +110,7 @@ class _HomeState extends State<Home> {
                         color: const Color(0xFFD0BCFF),
                         child: InkWell(
                           borderRadius: BorderRadius.circular(16.0),
-                          onTap: () => print('See Outpass Timings'),
+                          onTap: () {},
                           splashColor: const Color(0xFFBFABEE).withOpacity(1.0),
                           child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
