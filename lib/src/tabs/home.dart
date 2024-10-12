@@ -28,7 +28,7 @@ void _showPopupMenu(BuildContext context, Offset tapPosition) async {
       items: [
         PopupMenuItem(
           padding: const EdgeInsets.only(bottom: 10.0),
-          labelTextStyle: WidgetStatePropertyAll(
+          labelTextStyle: const WidgetStatePropertyAll(
             TextStyle(color: Colors.black),
             ),
           value: 1,
@@ -38,12 +38,12 @@ void _showPopupMenu(BuildContext context, Offset tapPosition) async {
               color: const Color(0xFFD0BCFF),
               borderRadius: BorderRadius.circular(16.0),
             ),
-            child: Center(child: Text('Emergency Outpass'))
+            child: const Center(child: Text('Emergency Outpass'))
             ),
         ),
         PopupMenuItem(
           padding: const EdgeInsets.only(bottom: 10.0),
-          labelTextStyle: WidgetStatePropertyAll(
+          labelTextStyle: const WidgetStatePropertyAll(
             TextStyle(color: Colors.black),
             ),
           value: 2,
@@ -53,12 +53,12 @@ void _showPopupMenu(BuildContext context, Offset tapPosition) async {
               color: const Color(0xFFD0BCFF),
               borderRadius: BorderRadius.circular(16.0),
             ),
-            child: Center(child: Text('Regular Timing Outpass'))
+            child: const Center(child: Text('Regular Timing Outpass'))
             ),
         ),
         PopupMenuItem(
           padding: const EdgeInsets.only(bottom: 00.0),
-          labelTextStyle: WidgetStatePropertyAll(
+          labelTextStyle: const WidgetStatePropertyAll(
             TextStyle(color: Colors.black),
             ),
           value: 2,
@@ -68,7 +68,7 @@ void _showPopupMenu(BuildContext context, Offset tapPosition) async {
               color: const Color(0xFFD0BCFF),
               borderRadius: BorderRadius.circular(16.0),
             ),
-            child: Center(child: Text('Special Timing Outpass'))
+            child: const Center(child: Text('Special Timing Outpass'))
             ),
         ),
       ],
