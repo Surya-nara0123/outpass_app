@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:outpass_app/src/components/appbar.dart';
 import 'package:intl/intl.dart';
+import 'package:outpass_app/src/components/drawer_function.dart';
 
 class ApplyOutpass extends StatefulWidget {
   const ApplyOutpass({super.key});
@@ -59,6 +60,7 @@ class _ApplyOutpassState extends State<ApplyOutpass> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(context),
+      drawer: drawerMenuFunction(context),
       body: Padding(
         padding: const EdgeInsets.only(
             top: 32.0, bottom: 32.0, left: 16.0, right: 16.0),
@@ -267,7 +269,7 @@ class _ApplyOutpassState extends State<ApplyOutpass> {
                       ? () {
                           if (_formKey.currentState!.validate()) {
                             // Handle form submission logic
-                            print('Form submitted');
+                            // print('Form submitted');
                           }
                         }
                       : null, // Disable the button if terms are not accepted

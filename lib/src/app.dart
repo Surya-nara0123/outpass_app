@@ -1,5 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:outpass_app/src/tabs/apply_outpass_special.dart';
+import 'package:outpass_app/src/tabs/apply_outpass.dart';
+import 'package:outpass_app/src/tabs/apply_outpass_emergency.dart';
 import 'package:outpass_app/src/tabs/home.dart';
 
 /// The Widget that configures your application.
@@ -26,7 +29,9 @@ class _MyAppState extends State<MyApp> {
       title: 'Outpass App',
       home: Home(camera: camera),
       routes: {
-        '/applyforoutpass' : (context) => Home(camera: camera),
+        '/applyforoutpass' : (context) => const ApplyOutpass(),
+        '/applyforoutpassEmergency' : (context) => const ApplyOutpassEmergency(),
+        '/applyforoutpassSpecial' : (context) => const ApplyOutpassSpecial(),
       },
     );
   }

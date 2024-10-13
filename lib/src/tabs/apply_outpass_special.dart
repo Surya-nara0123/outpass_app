@@ -3,15 +3,15 @@ import 'package:outpass_app/src/components/appbar.dart';
 import 'package:intl/intl.dart';
 import 'package:outpass_app/src/components/drawer_function.dart';
 
-class ApplyOutpassEmergency extends StatefulWidget {
-  const ApplyOutpassEmergency({super.key});
+class ApplyOutpassSpecial extends StatefulWidget {
+  const ApplyOutpassSpecial({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _ApplyOutpassEmergencyState createState() => _ApplyOutpassEmergencyState();
+  _ApplyOutpassSpecialState createState() => _ApplyOutpassSpecialState();
 }
 
-class _ApplyOutpassEmergencyState extends State<ApplyOutpassEmergency> {
+class _ApplyOutpassSpecialState extends State<ApplyOutpassSpecial> {
   // DateTime selectedDate = DateTime.now();
   // TextEditingController dateController = TextEditingController(
   //   text: DateFormat('yyyy-MM-dd').format(selectedDate),

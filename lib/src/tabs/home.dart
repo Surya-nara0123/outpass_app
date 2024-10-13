@@ -3,8 +3,11 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:outpass_app/src/components/appbar.dart';
+import 'package:outpass_app/src/components/drawer_function.dart';
+import 'package:outpass_app/src/tabs/apply_outpass_special.dart';
 import 'package:outpass_app/src/tabs/apply_outpass.dart';
 import 'package:outpass_app/src/tabs/apply_outpass_emergency.dart';
+import 'package:outpass_app/src/tabs/outpass_timings.dart';
 import 'package:outpass_app/src/tabs/scan_outpass.dart';
 
 class Home extends StatefulWidget {
@@ -13,6 +16,7 @@ class Home extends StatefulWidget {
   final CameraDescription camera;
 
   @override
+  // ignore: no_logic_in_create_state
   State<Home> createState() => _HomeState(camera: camera);
 }
 
@@ -128,7 +132,7 @@ void _showPopupMenu(BuildContext context, Offset tapPosition) async {
           Navigator.of(context).push(
             PageRouteBuilder(
               pageBuilder: (context, animation, secondaryAnimation) =>
-                  const ApplyOutpass(),
+                  const ApplyOutpassSpecial(),
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 const begin = Offset(1.0, 0.0); // Start from the right
                 const end = Offset.zero;
@@ -156,6 +160,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(context),
+      drawer: drawerMenuFunction(context),
       body: Padding(
         padding: const EdgeInsets.only(
             top: 32.0, bottom: 32.0, left: 16.0, right: 16.0),
@@ -190,31 +195,6 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.circular(16.0),
                           onTapUp: (details) => 
                             _showPopupMenu(context, details.globalPosition),
-                          onTap: () {
-                            // Navigator.of(context).push(
-                            //   PageRouteBuilder(
-                            //     pageBuilder:
-                            //         (context, animation, secondaryAnimation) =>
-                            //             const ApplyOutpass(),
-                            //     transitionsBuilder: (context, animation,
-                            //         secondaryAnimation, child) {
-                            //       const begin =
-                            //           Offset(1.0, 0.0); // Start from the right
-                            //       const end = Offset.zero;
-                            //       const curve = Curves.ease;
-
-                            //       var tween = Tween(begin: begin, end: end)
-                            //           .chain(CurveTween(curve: curve));
-                            //       var offsetAnimation = animation.drive(tween);
-
-                            //       return SlideTransition(
-                            //         position: offsetAnimation,
-                            //         child: child,
-                            //       );
-                            //     },
-                            //   ),
-                            // );
-                          },
                           splashColor: const Color(0xFFBFABEE).withOpacity(1.0),
                           child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -252,7 +232,31 @@ class _HomeState extends State<Home> {
                         color: const Color(0xFFD0BCFF),
                         child: InkWell(
                           borderRadius: BorderRadius.circular(16.0),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        const OutpassTimings(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  const begin =
+                                      Offset(1.0, 0.0); // Start from the right
+                                  const end = Offset.zero;
+                                  const curve = Curves.ease;
+
+                                  var tween = Tween(begin: begin, end: end)
+                                      .chain(CurveTween(curve: curve));
+                                  var offsetAnimation = animation.drive(tween);
+
+                                  return SlideTransition(
+                                    position: offsetAnimation,
+                                    child: child,
+                                  );
+                                },
+                              ),
+                            );
+                          },
                           splashColor: const Color(0xFFBFABEE).withOpacity(1.0),
                           child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -299,7 +303,7 @@ class _HomeState extends State<Home> {
                               PageRouteBuilder(
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
-                                        TakePictureScreen(camera: camera),
+                                        ScanOutpassPage(camera: camera),
                                 transitionsBuilder: (context, animation,
                                     secondaryAnimation, child) {
                                   const begin =
