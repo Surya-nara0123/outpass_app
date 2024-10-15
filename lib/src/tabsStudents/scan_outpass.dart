@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
+// import 'package:camera/camera.dart';
 
 import 'package:outpass_app/src/components/appbar.dart';
 import 'package:outpass_app/src/components/drawer_function.dart';
@@ -7,17 +7,17 @@ import 'package:outpass_app/src/components/drawer_function.dart';
 class ScanOutpassPage extends StatefulWidget {
   const ScanOutpassPage({
     super.key,
-    required this.camera,
+    // required this.camera,
   });
 
-  final CameraDescription camera;
+  // final CameraDescription camera;
 
   @override
   ScanOutpassState createState() => ScanOutpassState();
 }
 
 class ScanOutpassState extends State<ScanOutpassPage> {
-  late CameraController _controller;
+  // late CameraController _controller;
   late Future<void> _initializeControllerFuture;
 
   @override
@@ -25,21 +25,21 @@ class ScanOutpassState extends State<ScanOutpassPage> {
     super.initState();
     // To display the current output from the Camera,
     // create a CameraController.
-    _controller = CameraController(
+    // _controller = CameraController(
       // Get a specific camera from the list of available cameras.
-      widget.camera,
+      // widget.camera,
       // Define the resolution to use.
-      ResolutionPreset.veryHigh,
-    );
+      // ResolutionPreset.veryHigh,
+    // );
 
     // Next, initialize the controller. This returns a Future.
-    _initializeControllerFuture = _controller.initialize();
+    // _initializeControllerFuture = _controller.initialize();
   }
 
   @override
   void dispose() {
     // Dispose of the controller when the widget is disposed.
-    _controller.dispose();
+    // _controller.dispose();
     super.dispose();
   }
 
@@ -73,9 +73,9 @@ class ScanOutpassState extends State<ScanOutpassPage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Stack(children: [
-                        CameraPreview(
-                          _controller,
-                        ),
+                        // CameraPreview(
+                          // _controller,
+                        // ),
                         Center(
                           child: SizedBox(
                             width: 220,
