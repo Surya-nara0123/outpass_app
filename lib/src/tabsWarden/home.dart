@@ -4,158 +4,166 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:outpass_app/src/components/appbar.dart';
 import 'package:outpass_app/src/components/drawer_function.dart';
-import 'package:outpass_app/src/tabs/apply_outpass_special.dart';
-import 'package:outpass_app/src/tabs/apply_outpass.dart';
-import 'package:outpass_app/src/tabs/apply_outpass_emergency.dart';
-import 'package:outpass_app/src/tabs/outpass_timings.dart';
-import 'package:outpass_app/src/tabs/scan_outpass.dart';
+import 'package:outpass_app/src/tabsStudents/apply_outpass_special.dart';
+import 'package:outpass_app/src/tabsStudents/apply_outpass.dart';
+import 'package:outpass_app/src/tabsStudents/apply_outpass_emergency.dart';
+import 'package:outpass_app/src/tabsWarden/edit_outpass_timings.dart';
+import 'package:outpass_app/src/tabsWarden/outpass_list.dart';
+import 'package:outpass_app/src/tabsWarden/outpass_requests.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key, required this.camera});
+  const Home({super.key});
 
-  final CameraDescription camera;
+  // final CameraDescription camera;
 
   @override
   // ignore: no_logic_in_create_state
-  State<Home> createState() => _HomeState(camera: camera);
+  State<Home> createState() => _HomeState();
 }
 
 void _showPopupMenu(BuildContext context, Offset tapPosition) async {
-    final RenderBox overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+  final RenderBox overlay =
+      Overlay.of(context).context.findRenderObject() as RenderBox;
 
-    await showMenu(
-      context: context,
-      position: RelativeRect.fromRect(
-        tapPosition & const Size(40, 40), // Popup position size
-        Offset.zero & overlay.size, // Screen size
+  await showMenu(
+    context: context,
+    position: RelativeRect.fromRect(
+      tapPosition & const Size(40, 40), // Popup position size
+      Offset.zero & overlay.size, // Screen size
+    ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8.0),
+    ),
+    menuPadding: const EdgeInsets.all(10.0),
+    items: [
+      PopupMenuItem(
+        padding: const EdgeInsets.only(bottom: 10.0),
+        labelTextStyle: const WidgetStatePropertyAll(
+          TextStyle(color: Colors.black),
+        ),
+        value: 1,
+        child: Container(
+            height: 50.0,
+            decoration: BoxDecoration(
+              color: const Color(0xFFD0BCFF),
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: const Center(child: Text('Emergency Outpass'))),
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
+      PopupMenuItem(
+        padding: const EdgeInsets.only(bottom: 10.0),
+        labelTextStyle: const WidgetStatePropertyAll(
+          TextStyle(color: Colors.black),
+        ),
+        value: 2,
+        child: Container(
+            height: 50.0,
+            decoration: BoxDecoration(
+              color: const Color(0xFFD0BCFF),
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: const Center(child: Text('Regular Timing Outpass'))),
       ),
-      menuPadding: const EdgeInsets.all(10.0),
-      items: [
-        PopupMenuItem(
-          padding: const EdgeInsets.only(bottom: 10.0),
-          labelTextStyle: const WidgetStatePropertyAll(
-            TextStyle(color: Colors.black),
-            ),
-          value: 1,
-          child: Container(
+      PopupMenuItem(
+        padding: const EdgeInsets.only(bottom: 00.0),
+        labelTextStyle: const WidgetStatePropertyAll(
+          TextStyle(color: Colors.black),
+        ),
+        value: 2,
+        child: Container(
             height: 50.0,
             decoration: BoxDecoration(
               color: const Color(0xFFD0BCFF),
               borderRadius: BorderRadius.circular(16.0),
             ),
-            child: const Center(child: Text('Emergency Outpass'))
-            ),
-        ),
-        PopupMenuItem(
-          padding: const EdgeInsets.only(bottom: 10.0),
-          labelTextStyle: const WidgetStatePropertyAll(
-            TextStyle(color: Colors.black),
-            ),
-          value: 2,
-          child: Container(
-            height: 50.0,
-            decoration: BoxDecoration(
-              color: const Color(0xFFD0BCFF),
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            child: const Center(child: Text('Regular Timing Outpass'))
-            ),
-        ),
-        PopupMenuItem(
-          padding: const EdgeInsets.only(bottom: 00.0),
-          labelTextStyle: const WidgetStatePropertyAll(
-            TextStyle(color: Colors.black),
-            ),
-          value: 2,
-          child: Container(
-            height: 50.0,
-            decoration: BoxDecoration(
-              color: const Color(0xFFD0BCFF),
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            child: const Center(child: Text('Special Timing Outpass'))
-            ),
-        ),
-      ],
-    ).then((value) {
-      if (value != null) {
-        // Handle selection of options
-        if (value == 1) {
-          context.mounted ?
-          Navigator.of(context).push(
-            PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-                  const ApplyOutpassEmergency(),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                const begin = Offset(1.0, 0.0); // Start from the right
-                const end = Offset.zero;
-                const curve = Curves.ease;
+            child: const Center(child: Text('Special Timing Outpass'))),
+      ),
+    ],
+  ).then((value) {
+    if (value != null) {
+      // Handle selection of options
+      if (value == 1) {
+        context.mounted
+            ? Navigator.of(context).push(
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      const ApplyOutpassEmergency(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    const begin = Offset(1.0, 0.0); // Start from the right
+                    const end = Offset.zero;
+                    const curve = Curves.ease;
 
-                var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-                var offsetAnimation = animation.drive(tween);
+                    var tween = Tween(begin: begin, end: end)
+                        .chain(CurveTween(curve: curve));
+                    var offsetAnimation = animation.drive(tween);
 
-                return SlideTransition(
-                  position: offsetAnimation,
-                  child: child,
-                );
-              },
-            ),
-          ):null;
-        }
-        if (value == 2) {
-          context.mounted ?
-          Navigator.of(context).push(
-            PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-                  const ApplyOutpass(),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                const begin = Offset(1.0, 0.0); // Start from the right
-                const end = Offset.zero;
-                const curve = Curves.ease;
-
-                var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-                var offsetAnimation = animation.drive(tween);
-
-                return SlideTransition(
-                  position: offsetAnimation,
-                  child: child,
-                );
-              },
-            ),
-          ):null;
-        }
-        if (value == 3) {
-          context.mounted ?
-          Navigator.of(context).push(
-            PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-                  const ApplyOutpassSpecial(),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                const begin = Offset(1.0, 0.0); // Start from the right
-                const end = Offset.zero;
-                const curve = Curves.ease;
-
-                var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-                var offsetAnimation = animation.drive(tween);
-
-                return SlideTransition(
-                  position: offsetAnimation,
-                  child: child,
-                );
-              },
-            ),
-          ):null;
-        }
+                    return SlideTransition(
+                      position: offsetAnimation,
+                      child: child,
+                    );
+                  },
+                ),
+              )
+            : null;
       }
-    });
-  }
+      if (value == 2) {
+        context.mounted
+            ? Navigator.of(context).push(
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      const ApplyOutpass(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    const begin = Offset(1.0, 0.0); // Start from the right
+                    const end = Offset.zero;
+                    const curve = Curves.ease;
+
+                    var tween = Tween(begin: begin, end: end)
+                        .chain(CurveTween(curve: curve));
+                    var offsetAnimation = animation.drive(tween);
+
+                    return SlideTransition(
+                      position: offsetAnimation,
+                      child: child,
+                    );
+                  },
+                ),
+              )
+            : null;
+      }
+      if (value == 3) {
+        context.mounted
+            ? Navigator.of(context).push(
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      const ApplyOutpassSpecial(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    const begin = Offset(1.0, 0.0); // Start from the right
+                    const end = Offset.zero;
+                    const curve = Curves.ease;
+
+                    var tween = Tween(begin: begin, end: end)
+                        .chain(CurveTween(curve: curve));
+                    var offsetAnimation = animation.drive(tween);
+
+                    return SlideTransition(
+                      position: offsetAnimation,
+                      child: child,
+                    );
+                  },
+                ),
+              )
+            : null;
+      }
+    }
+  });
+}
 
 class _HomeState extends State<Home> {
-  _HomeState({required this.camera});
-  final CameraDescription camera;
+  _HomeState();
+  // final CameraDescription camera;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -193,20 +201,43 @@ class _HomeState extends State<Home> {
                         color: const Color(0xFFD0BCFF),
                         child: InkWell(
                           borderRadius: BorderRadius.circular(16.0),
-                          onTapUp: (details) => 
-                            _showPopupMenu(context, details.globalPosition),
+                          onTapUp: (details) {
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        const OutpassRequests(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  const begin =
+                                      Offset(1.0, 0.0); // Start from the right
+                                  const end = Offset.zero;
+                                  const curve = Curves.ease;
+
+                                  var tween = Tween(begin: begin, end: end)
+                                      .chain(CurveTween(curve: curve));
+                                  var offsetAnimation = animation.drive(tween);
+
+                                  return SlideTransition(
+                                    position: offsetAnimation,
+                                    child: child,
+                                  );
+                                },
+                              ),
+                            );
+                          },
                           splashColor: const Color(0xFFBFABEE).withOpacity(1.0),
                           child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.app_registration,
+                                Icons.rule_sharp,
                                 size: 64.0,
                                 color: Colors.black,
                               ),
                               SizedBox(height: 8.0),
                               Text(
-                                'Apply for Outpass',
+                                'Accept/Reject \n    Outapass',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 16.0,
@@ -237,7 +268,7 @@ class _HomeState extends State<Home> {
                               PageRouteBuilder(
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
-                                        const OutpassTimings(),
+                                        const EditOutpassTimings(),
                                 transitionsBuilder: (context, animation,
                                     secondaryAnimation, child) {
                                   const begin =
@@ -268,7 +299,7 @@ class _HomeState extends State<Home> {
                               ),
                               SizedBox(height: 8.0),
                               Text(
-                                'Outpass Timings',
+                                'Edit Outpass \n    Timings',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 16.0,
@@ -298,12 +329,51 @@ class _HomeState extends State<Home> {
                         color: const Color(0xFFD0BCFF),
                         child: InkWell(
                           borderRadius: BorderRadius.circular(16.0),
+                          onTapUp: (details) =>
+                              _showPopupMenu(context, details.globalPosition),
+                          splashColor: const Color(0xFFBFABEE).withOpacity(1.0),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.playlist_add_outlined,
+                                size: 64.0,
+                                color: Colors.black,
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                'Edit Outpass \n      Rules',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8.0),
+                  Expanded(
+                    child: Container(
+                      height: 200.0,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFD0BCFF),
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(16.0),
+                        color: const Color(0xFFD0BCFF),
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(16.0),
                           onTap: () {
                             Navigator.of(context).push(
                               PageRouteBuilder(
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
-                                        ScanOutpassPage(camera: camera),
+                                        const OutpassList(),
                                 transitionsBuilder: (context, animation,
                                     secondaryAnimation, child) {
                                   const begin =
@@ -328,13 +398,13 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.qr_code_scanner_sharp,
+                                Icons.playlist_add_check_outlined,
                                 size: 64.0,
                                 color: Colors.black,
                               ),
                               SizedBox(height: 8.0),
                               Text(
-                                'Scan outpass',
+                                'Outpass List',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 16.0,

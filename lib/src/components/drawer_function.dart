@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 Drawer drawerMenuFunction(BuildContext context) {
@@ -37,7 +36,7 @@ Drawer drawerMenuFunction(BuildContext context) {
         ListTile(
           title: const Text('Rule for applying for an Outpass'),
           onTap: () {
-            Navigator.of(context).pushNamed('/applyforoutpass');
+            Navigator.of(context).pushNamed('/rulesforoutpass');
           },
         ),
       ],
