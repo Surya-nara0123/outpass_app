@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:camera/camera.dart';
+// import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:outpass_app/src/components/appbar.dart';
 import 'package:outpass_app/src/components/drawer_function.dart';
