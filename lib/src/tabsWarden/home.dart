@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-// import 'package:camera/camera.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:outpass_app/src/components/appbar.dart';
 import 'package:outpass_app/src/components/drawer_function.dart';
@@ -12,13 +12,13 @@ import 'package:outpass_app/src/tabsWarden/outpass_list.dart';
 import 'package:outpass_app/src/tabsWarden/outpass_requests.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({super.key, required this.camera});
 
-  // final CameraDescription camera;
+  final CameraDescription camera;
 
   @override
   // ignore: no_logic_in_create_state
-  State<Home> createState() => _HomeState();
+  State<Home> createState() => _HomeState(camera: camera);
 }
 
 void _showPopupMenu(BuildContext context, Offset tapPosition) async {
@@ -162,8 +162,8 @@ void _showPopupMenu(BuildContext context, Offset tapPosition) async {
 }
 
 class _HomeState extends State<Home> {
-  _HomeState();
-  // final CameraDescription camera;
+  _HomeState({required this.camera});
+  final CameraDescription camera;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
