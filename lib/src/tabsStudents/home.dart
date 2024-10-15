@@ -303,7 +303,7 @@ class _HomeState extends State<Home> {
                               PageRouteBuilder(
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
-                                        ScanOutpassPage(camera: camera),
+                                        ScanOutpassPage(),
                                 transitionsBuilder: (context, animation,
                                     secondaryAnimation, child) {
                                   const begin =
