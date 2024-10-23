@@ -7,6 +7,7 @@ const { AuthorityRouter } = require("./routes/AuthorityRoute.js");
 const { outpassRouter } = require("./routes/outPass.js");
 const AuthorModel = require("./Models/AuthorityModel.js");
 const OutPassModel = require("./Models/OutPassModel.js");
+const cors = require("cors");
 
 require('dotenv').config();
 
@@ -69,6 +70,11 @@ async function notifyAuthority(outpassData) {
     }
 }
 
+app.use(express.json());
+app.use(cors({
+    origin: "http://localhost:5173" // Only allow requests from this origin
+  }));
+  
 app.use(express.json());
 
 // Routes
