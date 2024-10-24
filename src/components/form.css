@@ -1,0 +1,72 @@
+.form {
+    border: 2px solid rgb(31, 31, 44);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    height: 700px;
+    margin: auto; /* Center the form */
+}
+
+.input-container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 29px;
+    padding: 7px;
+    color: #FF8C06;
+}
+.m-8{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.placeholder {
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+    padding: 10px;
+}
+
+label {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: gray;
+}
+
+.inputbox {
+    padding: 16px;
+    margin-top: 7px; /* Space between label and input */
+    border-radius: 2px;
+    border: 1px solid gray; /* Consistent border */
+    color: gray;
+    width: 89%; /* Full width for input */
+    transition: border-color 0.3s; /* Smooth transition for focus */
+}
+
+.inputbox:focus {
+    border-color: #FF8C06; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.btn {
+    padding: 15px;
+    width: 100%; /* Full width button */
+    margin-top: 15px; /* Space above the button */
+    background-color: #FF8C06;
+    border: 2px solid transparent; /* Transparent border to prevent shift */
+    border-radius: 10px;
+    color: white;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+    outline: none;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #FF8C06;
+    border-color: #FF8C06; /* Show border on hover */
+}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import './form.css'
 export default function AuthorSignin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,25 +35,28 @@ export default function AuthorSignin() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="m-8">
-      <div>
-        Enter Email:{" "}
-        <input
+    <form onSubmit={handleSubmit} className="form">
+      <div className="input-container">
+      <div className="heading">Sign in</div>
+      <div className="placholder m-8">
+        <label htmlFor="Email">Email</label>
+        <input className="inputbox" 
+          placeholder="Email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div>
-        Enter Password:{" "}
-        <input
+      <div className="placholder m-8">
+      <label htmlFor="Password">Password</label>
+        <input className="inputbox"
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <div>
-        <button type="submit">Submit</button>
+        <button type="submit" className="btn">Submit</button>
       </div>
     </form>
   );
