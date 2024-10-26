@@ -34,33 +34,33 @@ export default function AuthorSignup() {
       <div className="input-container">
         <div className="heading">Register</div>
         <div className="placholder m-8">
-        <label htmlFor="Name">Name</label>
-        <input className="inputbox"
-          type="text"
-          id="Name"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        /></div>
+          <label htmlFor="Name">Name</label>
+          <input className="inputbox"
+            type="text"
+            id="Name"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          /></div>
         <div className="placholder m-8">
-        <label htmlFor="Email">Email</label>
-        <input className="inputbox"
-          type="email"
-          value={email}
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        /></div>
+          <label htmlFor="Email">Email</label>
+          <input className="inputbox"
+            type="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          /></div>
         <div className="placholder m-8">
-        <label htmlFor="Password">Password</label>
-        <input className="inputbox"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        /></div>
+          <label htmlFor="Password">Password</label>
+          <input className="inputbox"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          /></div>
         <button type="submit" className="btn">Submit</button>
       </div>
-      
+
     </form>
   );
 }

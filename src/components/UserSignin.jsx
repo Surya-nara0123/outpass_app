@@ -38,23 +38,23 @@ export default function UserSignin() {
   return (
     <form onSubmit={handleSubmit} className="form">
       <div className="input-container">
-      <div className="heading">Sign in</div>
-      <div className="placholder m-8">
-        <label htmlFor="Email">Email</label>
-        <input className="inputbox"
-          type="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="placholder m-8">
-        <label htmlFor="Password">Password</label>
-        <input className="inputbox"
-          type="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
+        <div className="heading">Sign in</div>
+        <div className="placholder m-8">
+          <label htmlFor="Email">Email</label>
+          <input className="inputbox"
+            type="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="placholder m-8">
+          <label htmlFor="Password">Password</label>
+          <input className="inputbox"
+            type="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <button type="submit" className="btn">Submit</button>
         <div class="g_id_signin" data-type="standard"></div>
       </div>

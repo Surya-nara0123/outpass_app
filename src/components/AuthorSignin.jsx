@@ -37,25 +37,25 @@ export default function AuthorSignin() {
   return (
     <form onSubmit={handleSubmit} className="form">
       <div className="input-container">
-      <div className="heading">Sign in</div>
-      <div className="placholder m-8">
-        <label htmlFor="Email">Email</label>
-        <input className="inputbox" 
-          placeholder="Email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="placholder m-8">
-      <label htmlFor="Password">Password</label>
-        <input className="inputbox"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
+        <div className="heading">Sign in</div>
+        <div className="placholder m-8">
+          <label htmlFor="Email">Email</label>
+          <input className="inputbox"
+            placeholder="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="placholder m-8">
+          <label htmlFor="Password">Password</label>
+          <input className="inputbox"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <button type="submit" className="btn">Submit</button>
       </div>
     </form>
