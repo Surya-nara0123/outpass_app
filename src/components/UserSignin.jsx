@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import './form.css'
+import logo from '../assets/logo.png'
 
 export default function UserSignin() {
   const [email, setEmail] = useState("");
@@ -15,21 +16,13 @@ export default function UserSignin() {
     };
 
     try {
-      const response = await axios.post("http://localhost:8080/user/signin", requestBody, {
+      const response = await axios.post("http://localhost:8080/user/signup", requestBody, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-
-      // Assume the token is in response.data.token
-      const token = response.data.token;
-      console.log("Token received:", token);
-
-      // Store the token in localStorage for future requests
-      localStorage.setItem("authToken", token);
-
-      // Optionally alert the token (or success message)
-      alert("Logged in successfully!");
+      console.log("Response data:", response.data);
+      alert(response.data.message)
     } catch (error) {
       console.error("Error making POST request:", error);
     }
@@ -38,25 +31,32 @@ export default function UserSignin() {
   return (
     <form onSubmit={handleSubmit} className="form">
       <div className="input-container">
-        <div className="heading">Sign in</div>
+        <img src={logo} alt=""  className="login-image"/>
         <div className="placholder m-8">
-          <label htmlFor="Email">Email</label>
           <input className="inputbox"
+            placeholder="Email"
             type="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="placholder m-8">
-          <label htmlFor="Password">Password</label>
           <input className="inputbox"
-            type="Password"
+            type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn">Submit</button>
-        <div class="g_id_signin" data-type="standard"></div>
+        <div className="form-bottom">
+          <input type="checkbox" name="rememberusername" id="rememberusername" value="1"/>
+          <label for="rememberusername">Remember username</label>
+          <button type="submit" className="btn">Submit</button>
+          <div className="or-divider">
+            <span className="or-text">or</span>
+          </div>
+          <a href="">Forgotten your password?</a>
+        </div>
       </div>
     </form>
   );

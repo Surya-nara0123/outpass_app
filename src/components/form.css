@@ -1,26 +1,35 @@
+body{
+    margin: 0;
+}
 .form {
     border: 2px solid rgb(31, 31, 44);
-    border-radius: 5px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 400px;
-    height: 700px;
+    align-items: center;
+    width: 70vh;
+    position: relative;
+    height: 80vh;
     margin: auto;
+    top: 80px;
+    background-color: rgb(34, 34, 136);
     /* Center the form */
 }
 
 .input-container {
-    padding: 40px;
+    width: 60%;
     display: flex;
     flex-direction: column;
 }
 
-.heading {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 29px;
-    padding: 7px;
-    color: #FF8C06;
+.login-image{
+    margin-left: 15%;
+    height: 190px;
+    width: 200px;
+    border: 5px solid transparent;
+    border-radius: 60%;
+    margin-bottom: 10px;
 }
 
 .m-8 {
@@ -31,7 +40,6 @@
 .placeholder {
     display: flex;
     flex-direction: column;
-    /* Stack label and input vertically */
     padding: 10px;
 }
 
@@ -39,14 +47,13 @@ label {
     margin-top: 15px;
     margin-bottom: 10px;
     font-size: 14px;
-    color: gray;
+    color: rgb(255, 255, 255);
 }
 
 .inputbox {
     padding: 16px;
     margin-top: 7px;
-    /* Space between label and input */
-    border-radius: 2px;
+    border-radius: 3px;
     border: 1px solid gray;
     /* Consistent border */
     color: gray;
@@ -57,7 +64,7 @@ label {
 }
 
 .inputbox:focus {
-    border-color: #FF8C06;
+    border-color: #bf7b2e;
     /* Change border color on focus */
     outline: none;
     /* Remove default outline */
@@ -78,10 +85,39 @@ label {
     /* Smooth transitions */
     outline: none;
 }
-
+a{
+    color: white;
+    text-decoration: none;
+    justify-content: center;
+}
 .btn:hover {
     background-color: white;
     color: #FF8C06;
     border-color: #FF8C06;
     /* Show border on hover */
 }
+.form-bottom{
+    margin-top: 15px;
+}
+.or-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0; /* Adjust margin as needed */
+  }
+  
+  .or-text {
+    color: white;
+    position: relative;
+    padding: 0 10px; /* Space around the text */
+  }
+  
+  .or-text::before,
+  .or-text::after {
+    content: '';
+    flex: 1;
+    height: 1px; /* Line thickness */
+    background-color: #dbd4d4; /* Line color */
+    margin: 0 10px; /* Space between line and text */
+  }
+  
