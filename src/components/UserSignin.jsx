@@ -29,35 +29,41 @@ export default function UserSignin() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
-      <div className="input-container">
-        <img src={logo} alt=""  className="login-image"/>
-        <div className="placholder m-8">
-          <input className="inputbox"
-            placeholder="Email"
-            type="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="placholder m-8">
-          <input className="inputbox"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="form-bottom">
-          <input type="checkbox" name="rememberusername" id="rememberusername" value="1"/>
-          <label for="rememberusername">Remember username</label>
-          <button type="submit" className="btn">Submit</button>
-          <div className="or-divider">
-            <span className="or-text">or</span>
+    <div className="container">
+      <form onSubmit={handleSubmit} className="form">
+        <div className="input-container">
+          <div className="image-container">
+            <img src={logo} alt="" className="login-image" />
           </div>
-          <a href="">Forgotten your password?</a>
+          <div className="placholder m-8">
+            <input className="inputbox"
+              placeholder="Email"
+              type="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="placholder m-8">
+            <input className="inputbox"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="form-bottom">
+            <input type="checkbox" name="rememberusername" id="rememberusername" value="1" />
+            <label for="rememberusername">Remember username</label>
+            <button type="submit" className="btn">Submit</button>
+            <div className="or-divider">
+              <span className="or-text">or</span>
+            </div>
+            <div className="image-container">
+              <a href="">Forgotten your password?</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
