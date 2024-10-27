@@ -31,5 +31,30 @@
     display: flex;
     align-items: center;
     padding-left: 5px;
-    margin-right: 10px; /* Center the name and icon vertically */
+    margin-right: 10px; 
+}
+.dropdown-menu {
+    position: absolute;
+    top: 68px;
+    right: 10px;
+    background-color: white; /* Background color for the dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 1000; /* Ensure it appears above other elements */
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+    padding: 10px; /* Padding inside the dropdown */
+}
+
+.dropdown-menu button {
+    background: none; /* No background */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding for the button */
+    cursor: pointer; /* Change cursor to pointer */
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Full width for easier clicking */
+}
+
+.dropdown-menu button:hover {
+    background-color: #f0f0f0; /* Change background on hover */
 }
