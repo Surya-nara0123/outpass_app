@@ -1,0 +1,35 @@
+.Navbar {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space out header and right section */
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add box shadow */
+    width: 100%;
+    height: 65px;
+    margin: 0;
+}
+.logo{
+    height: 60px;
+    margin: auto 10px;
+}
+.header {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 22px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+}
+.icon {
+    margin-left: 8px;
+    margin-right: 7px;
+    font-size: 24px; /* Icon size */
+    cursor: pointer; /* Change cursor on hover */
+    
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    margin-right: 10px; /* Center the name and icon vertically */
+}
