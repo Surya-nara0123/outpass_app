@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import routes from '../routes';
 
 function App() {
-  const [islogged,Setlogged]=useState(false);
+  const [islogged,Setlogged]=useState(1);
   return (
     <BrowserRouter>
       <Navbar islogged={islogged}/>

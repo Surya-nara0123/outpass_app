@@ -28,6 +28,13 @@ export function Navbar({ islogged }) {
         setDropdownOpen(false); // Close the dropdown after clicking
     };
 
+    // if the mouse is clicked outside the dropdown, close it
+    window.onclick = function (event) {
+        if (!event.target.className.includes('user-info')) {
+            setDropdownOpen(false);
+        }
+    };
+
     if (islogged === 1) {
         return (
             <div className='Navbar'>
